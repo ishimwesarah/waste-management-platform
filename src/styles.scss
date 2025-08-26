@@ -1,1 +1,276 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for Color Palette */
+:root {
+  // Primary Green for WasteWise Connect
+  --color-primary: #388E3C; // A deeper, richer green
+  --color-primary-light: #66BB6A;
+  --color-primary-dark: #2E7D32;
+
+  // Accent Blue (for links, secondary actions)
+  --color-accent: #1976D2;
+  --color-accent-light: #42A5F5;
+  --color-accent-dark: #1565C0;
+
+  // Neutral Colors for text, backgrounds, borders
+  --color-text-dark: #212121;
+  --color-text-medium: #616161;
+  --color-text-light: #757575;
+  --color-background-light: #F8F8F8; // Light grey background
+  --color-background-even-row: #F2F2F2; // Slightly darker for table rows
+  --color-surface: #FFFFFF; // For cards, panels
+  --color-border: #E0E0E0;
+
+  // Semantic Colors - Pre-calculated variations
+  --color-success: #4CAF50;
+  --color-success-light: #D4EDDA; // For alert background
+  --color-success-dark: #155724;  // For alert text
+
+  --color-error: #D32F2F;
+  --color-error-light: #F8D7DA;  // For alert background
+  --color-error-dark: #721C24;   // For alert text
+  --color-error-darker: #BD2130; // For button hover (roughly darken 10%)
+
+  --color-warning: #FFC107;
+  --color-warning-light: #FFF3CD; // For alert background
+  --color-warning-dark: #664D03;  // For alert text
+
+  --color-info: #2196F3;
+  --color-info-light: #CCE5FF;    // For alert background
+  --color-info-dark: #004085;     // For alert text
+
+  // Spacing
+  --space-xs: 0.25rem; // 4px
+  --space-sm: 0.5rem;  // 8px
+  --space-md: 1rem;    // 16px
+  --space-lg: 1.5rem;  // 24px
+  --space-xl: 2rem;    // 32px
+  --space-xxl: 3rem;   // 48px
+
+  // Shadows
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  // Border Radius
+  --border-radius: 8px;
+}
+
+/* Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text-dark);
+  background-color: var(--color-background-light);
+  line-height: 1.6;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-dark);
+  font-weight: 600;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Global button styles
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary {
+  background-color: var(--color-background-light);
+  color: var(--color-text-medium);
+  border-color: var(--color-border);
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+.btn-accent:hover:not(:disabled) {
+  background-color: var(--color-accent-dark);
+  box-shadow: var(--shadow-sm);
+}
+.btn-danger {
+  background-color: var(--color-error);
+  color: var(--color-surface);
+}
+.btn-danger:hover:not(:disabled) {
+  // Now using the pre-calculated darker error color variable
+  background-color: var(--color-error-darker);
+  box-shadow: var(--shadow-sm);
+}
+button:disabled, .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+// Global form styles
+.form-group {
+  margin-bottom: var(--space-md);
+}
+.form-label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  color: var(--color-text-medium);
+}
+.form-input, .form-select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  background-color: var(--color-surface);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.form-input:focus, .form-select:focus {
+  border-color: var(--color-accent);
+  // For box-shadow with opacity, it's generally best to use RGBA directly
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2); /* Using rgba equivalent of --color-accent with 0.2 opacity */
+  outline: none;
+}
+.form-input.is-invalid, .form-select.is-invalid {
+  border-color: var(--color-error);
+}
+.error-message {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+}
+
+// General card style
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+// Alert styles - Now using pre-calculated light/dark variables
+.alert-error, .alert-success, .alert-info, .alert-warning {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--border-radius);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid transparent;
+}
+.alert-error {
+  background-color: var(--color-error-light);
+  color: var(--color-error-dark);
+  border-color: var(--color-error);
+}
+.alert-success {
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
+  border-color: var(--color-success);
+}
+.alert-info {
+  background-color: var(--color-info-light);
+  color: var(--color-info-dark);
+  border-color: var(--color-info);
+}
+.alert-warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+  border-color: var(--color-warning);
+}
+
+// Utility classes
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); } // Added for consistency
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); } // Added for consistency
+.p-md { padding: var(--space-md); }
+.p-xl { padding: var(--space-xl); } // Added for consistency
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.flex-end { display: flex; justify-content: flex-end; }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); } // Added for consistency
+.ml-sm { margin-left: var(--space-sm); } // Utility margin-left small
+.ml-md { margin-left: var(--space-md); } // Utility margin-left medium
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.3em 0.7em;
+  border-radius: var(--border-radius);
+  font-size: 0.8em;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: var(--color-surface);
+  // Default fallback colors, overridden by specific status classes
+  background-color: var(--color-text-medium);
+}
+.status-pending { background-color: var(--color-info); }
+.status-paid { background-color: var(--color-success); }
+.status-overdue { background-color: var(--color-error); }
+.status-scheduled { background-color: var(--color-accent); }
+.status-collected { background-color: var(--color-primary); }
+.status-rescheduled { background-color: var(--color-warning); color: var(--color-text-dark); }
+.status-cancelled { background-color: var(--color-error); }
