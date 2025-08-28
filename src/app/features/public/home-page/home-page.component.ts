@@ -22,7 +22,7 @@ import { AuthService } from '../../../core/services/auth.service';
           </div>
         </div>
         <div class="hero-image">
-          <img ngSrc="assets/images/hero-waste-truck.png" alt="Waste collection truck" width="600" height="400" priority>
+          <img ngSrc="assets/images/hero.jpg" alt="Waste collection truck" width="600" height="400" priority>
         </div>
       </div>
     </section>

@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
           is still a manual, often frustrating experience for both residents and collectors.
           We envisioned a solution that brings clarity, convenience, and efficiency to this essential service.
         </p>
-        <img ngSrc="assets/images/about-team.png" alt="WasteWise Connect Team" width="800" height="450">
+        <img ngSrc="assets/images/about.jpg" alt="WasteWise Connect Team" width="800" height="450">
       </section>
 
       <section class="our-mission">

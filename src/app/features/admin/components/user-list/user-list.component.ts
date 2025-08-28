@@ -75,7 +75,8 @@ import { HttpErrorResponse } from '@angular/common/http';
       color: var(--color-text-dark);
     }
     .user-table tr:nth-child(even) {
-      background-color: lighten(var(--color-background-light), 2%);
+      /* Corrected: Use the pre-defined CSS variable */
+      background-color: var(--color-background-even-row);
     }
     .table-actions {
       white-space: nowrap; /* Prevent buttons from wrapping */
@@ -109,7 +110,7 @@ export class UserListComponent {
         this.users.set(data);
         this.isLoading.set(false);
       },
-      error: (err: HttpErrorResponse) => { // Type err explicitly
+      error: (err: HttpErrorResponse) => {
         console.error('Failed to load users', err);
         this.errorMessage.set('Failed to load users. Please try again.');
         this.isLoading.set(false);
@@ -123,7 +124,7 @@ export class UserListComponent {
         next: () => {
           this.users.update(currentUsers => currentUsers.filter(user => user.id !== id));
         },
-        error: (err: HttpErrorResponse) => { // Type err explicitly
+        error: (err: HttpErrorResponse) => {
           console.error('Failed to delete user', err);
           this.errorMessage.set('Failed to delete user. Please try again.');
         }
